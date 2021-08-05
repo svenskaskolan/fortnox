@@ -75,3 +75,9 @@ intall build server
 
 npm install -g serve
 run build version using serve -s build
+
+css changes should be made to the .less files located in the css/less folder beneath the src folder.  Convert .less files to .css using the following command issued from the src directory.
+
+lessc css/less/mystyle.less css/mystyle.css
+
+This will convert the .less file to a .css file in the parent folder.  A script/webpack can be used to do this automatically when changes are made to a .less file.
