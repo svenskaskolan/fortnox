@@ -1,12 +1,44 @@
+import { useState } from "react";
+import { ChromePicker } from "react-color";
 
 const AddBoxForm = () => {
+
+    const [custName, setCustName] = useState('');
+    const [custWeight, setCustWeight] = useState(0);
+    const [custColour, setCustColour] = useState();
+    const [selectedColour, setSelectedColour] = useState(custColour);
+    const [custCountry, setCustCountry] = useState('');
+    var [viewColourPicker, toggleColourPicker] = useState(false);
+
+    const colourPickerButton = () => {
+        toggleColourPicker(viewColourPicker = !viewColourPicker);
+        setSelectedColour(custColour);
+    }
+
+
     return (
     <div className="AddBoxForm">
         <div>
-            <input className="input" placeholder="Name" type="text" />
+            <input placeholder="Name" type="text" value={custName} onChange={event => setCustName(event.target.value)}/>
         </div>
         <div>
-            <input className="input" placeholder="Weight" type="text" />
+            <input placeholder="Weight" type="number" value={custWeight} onChange={event => setCustWeight(event.target.value)} />
+        </div>
+        <div>
+            <button style={{backgroundColor: selectedColour}} onClick={colourPickerButton}>
+                {viewColourPicker ? 'Select' : 'Click to change color'}
+            </button>
+            <div className={viewColourPicker ? 'show' : 'hide'}>
+                <ChromePicker color={custColour} disableAlpha={true} onChange={updatedColor => setCustColour(updatedColor.hex.substr(0,5) + '00')}/>
+            </div>
+        </div>
+        <div>
+            <select>
+                <option>Sweden</option>
+                <option>China</option>
+                <option>Brazil</option>
+                <option>Australia</option>
+            </select>
         </div>
     </div>
     )
