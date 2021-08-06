@@ -13,9 +13,12 @@ code {
     monospace;
 }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
+.show {
+  max-height: 600px;
+  transition: max-height 2s ease-in-out;
+}
+
+.hide {
+  max-height: 0px;
+  overflow: hidden;
 }
