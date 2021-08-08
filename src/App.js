@@ -1,26 +1,27 @@
 import { useState } from "react";
 import './css/app.css';
+import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 import AddBoxForm from './components/AddBoxForm';
 import AddBoxHeader from './components/AddBoxHeader';
 import ListBoxOrders from './components/ListBoxOrders';
 
 function App() {
   const [boxinatorData, setBoxinatorData] = useState([{
-    boxName: "terry",
+    boxName: "Trever Williams",
     boxWeight: 10,
-    boxColour: "#abcd00",
+    boxColour: "#b2a700",
     boxDestination: "sweden"
   },
   {
     boxName: "chris",
-    boxweight: 15,
-    boxColour: "#abcd00",
-    boxDestination: "sweden"
+    boxWeight: 15,
+    boxColour: "#05cd00",
+    boxDestination: "brazil"
   },
   {
     boxName: "sven",
     boxWeight: 20,
-    boxColour: "#abcd00",
+    boxColour: "#555500",
     boxDestination: "sweden"
   }]);
 
@@ -41,12 +42,24 @@ function App() {
           <AddBoxHeader title="Boxinator" />
         </header>
         <main>
-          <div className="App-center">
-            <AddBoxForm onSubmitFunction={addBox}/>
-          </div>
-          <div>
-            <ListBoxOrders orders={boxinatorData} />
-          </div>
+          <Router>
+              <NavLink to="/addbox" activeStyle={{display: "none"}}>
+                <li>Add a Box</li>
+              </NavLink>
+              <Route path="/addbox" render={props => (
+                <div className="App-center">
+                  <AddBoxForm onSubmitFunction={addBox}/>
+                </div>)
+              }/>
+              <NavLink to="/listboxes" activeStyle={{display: "none"}}>
+                <li>List Boxes</li>
+              </NavLink>
+              <Route path="/listboxes" render={props => (
+                <div>
+                  <ListBoxOrders orders={boxinatorData} />
+                </div>)
+              }/>
+          </Router>
         </main>
       </div>
     );
