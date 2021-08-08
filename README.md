@@ -81,3 +81,7 @@ css changes should be made to the .less files located in the css/less folder ben
 lessc css/less/mystyle.less css/mystyle.css
 
 This will convert the .less file to a .css file in the parent folder.  A script/webpack can be used to do this automatically when changes are made to a .less file.
+
+In the color picker (I'm using Chrome color picker via react-color) if the selected colour is too dark, I change the text color to white so it can still be read.
+
+
