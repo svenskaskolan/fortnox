@@ -8,10 +8,10 @@ const ListBoxOrders = (props) => {
             <Table>
                 <Thead>
                     <Tr>
-                        <Th>Name</Th>
+                        <Th>Reciever</Th>
                         <Th>Weight</Th>
-                        <Th>Colour</Th>
-                        <Th>Destination</Th>
+                        <Th>Box colour</Th>
+                        <Th>Shipping cost</Th>
                     </Tr>
                 </Thead>
                 <Tbody>

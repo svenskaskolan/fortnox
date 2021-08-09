@@ -84,4 +84,8 @@ This will convert the .less file to a .css file in the parent folder.  A script/
 
 In the color picker (I'm using Chrome color picker via react-color) if the selected colour is too dark, I change the text color to white so it can still be read.
 
+I have managed to prevent any shade of blue from being picked, it does make the color picker appear to work in a strange way, but I think its still correct.
+
+I added react router to the bundle for some basic routing.
+
 

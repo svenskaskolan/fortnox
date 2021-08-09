@@ -1,8 +1,21 @@
 .App {
   text-align: center;
 }
+.App .buttonLink {
+  width: 100px;
+  margin: 10px 0;
+  border: solid 2px darkgray;
+  border-radius: 4px;
+  background-color: darkseagreen;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+}
+.App .buttonLink:active {
+  border-color: #5858f8;
+}
 .App-center {
-  background-color: #c4cad4;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
@@ -22,19 +35,10 @@
   border: none;
   border: solid 2px darkgray;
   cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
-}
-.App-center input.saveButton,
-.App-center button.saveButton,
-.App-center select.saveButton {
-  background-color: darkseagreen;
-  margin-left: 50%;
-  width: 40%;
-  margin-right: 10%;
 }
 .App-center input:focus,
 .App-center button:focus,
@@ -44,4 +48,77 @@
 .addBoxHeader {
   margin-top: 30px;
   margin-bottom: 30px;
+}
+.Card {
+  background-color: #c4cad4;
+  /* Animations to fade the toaster in and out */
+}
+.Card__title {
+  font-weight: bold;
+  padding: 10px 0;
+}
+.Card__button {
+  background-color: darkseagreen;
+  margin-bottom: 10px;
+}
+.Card__errormessage {
+  font-size: 0.8rem;
+  color: red;
+}
+.Card__toaster {
+  margin-top: 10px;
+  visibility: hidden;
+  min-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: darkseagreen;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 16px;
+}
+.Card__toaster.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }

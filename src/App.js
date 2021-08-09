@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {React, useState} from "react";
 import './css/app.css';
 import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 import AddBoxForm from './components/AddBoxForm';
@@ -43,16 +43,16 @@ function App() {
         </header>
         <main>
           <Router>
-              <NavLink to="/addbox" activeStyle={{display: "none"}}>
-                <li>Add a Box</li>
+              <NavLink className="buttonLink" to="/addbox" activeStyle={{display: "none"}}>
+                Add a Box
               </NavLink>
               <Route path="/addbox" render={props => (
                 <div className="App-center">
                   <AddBoxForm onSubmitFunction={addBox}/>
                 </div>)
               }/>
-              <NavLink to="/listboxes" activeStyle={{display: "none"}}>
-                <li>List Boxes</li>
+              <NavLink className="buttonLink" to="/listboxes" activeStyle={{display: "none"}}>
+                List Boxes
               </NavLink>
               <Route path="/listboxes" render={props => (
                 <div>
