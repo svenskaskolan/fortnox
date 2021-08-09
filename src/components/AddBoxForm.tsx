@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { ChromePicker } from "react-color";
 
-const AddBoxForm = (props) => {
+const AddBoxForm = (props: any) => {
 
     const [custName, setCustName] = useState('');
-    const [custWeight, setCustWeight] = useState();
-    const [custColour, setCustColour] = useState();
+    const [custWeight, setCustWeight] = useState<number>();
+    const [custColour, setCustColour] = useState('');
     const [selectedColour, setSelectedColour] = useState(custColour);
     const [custCountry, setCustCountry] = useState('Sweden');
     const [textColour, setTextColour] = useState('black');
@@ -15,14 +15,16 @@ const AddBoxForm = (props) => {
 
     const colourPickerButton = () => {
         toggleColourPicker(viewColourPicker = !viewColourPicker);
-        setSelectedColour(custColour);
         try {
-            const redColour = parseInt(custColour.substr(1,2), 16);
-            const greenColour = parseInt(custColour.substr(3,2), 16);
-            if (redColour < 100 && greenColour < 100) {
-                setTextColour('white');
-            } else {
-                setTextColour('black');
+            if (custColour) {
+                setSelectedColour(custColour);
+                const redColour = parseInt(custColour.substr(1,2), 16);
+                const greenColour = parseInt(custColour.substr(3,2), 16);
+                if (redColour < 100 && greenColour < 100) {
+                    setTextColour('white');
+                } else {
+                    setTextColour('black');
+                }
             }
         } catch(e) {
             setTextColour('black');
@@ -36,12 +38,13 @@ const AddBoxForm = (props) => {
         }
         props.onSubmitFunction(custName, custWeight, selectedColour, custCountry)
         setCustName('');
-        setCustWeight('');
+        setCustWeight(undefined);
         setSelectedColour('');
         setCustCountry('');
         setFormIsValid(true);
         // assume we get successful post to server.
         setShowToaster(true);
+        // switch off the toaster message after 3 seconds.
         setTimeout(function(){ setShowToaster(false) }, 3000);
     }
 
@@ -54,7 +57,7 @@ const AddBoxForm = (props) => {
                 {!formIsValid && !custName && (<div className="Card__errormessage">you need to enter a name</div>)}
             </div>
             <div>
-                <input placeholder="Weight" type="number" value={custWeight} onChange={event => setCustWeight(event.target.value)} />
+                <input placeholder="Weight" type="number" value={custWeight} onChange={event => setCustWeight(parseFloat(event.target.value))} />
                 {!formIsValid && (!custWeight || custWeight < 0) && (<div className="Card__errormessage">enter a positive value for weight</div>)}
             </div>
             <div>
@@ -80,7 +83,7 @@ const AddBoxForm = (props) => {
             </div>
         </div>
         <div className={showToaster ? "Card__toaster show" : "Card__toaster"}>
-            <span> Box has been added</span>
+            <span>Box has been added</span>
         </div>
     </>
     )

@@ -1,8 +1,10 @@
 import '../css/listItem.css';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import '../css/SuperResponsiveTableStyle.css';
+import tBoxinatorData from '../interfacesAndTypes/tBoxinatorData';
+import countryValues from '../enums/countryValues';
 
-const ListBoxOrders = (props) => {
+const ListBoxOrders = (props: {orders:tBoxinatorData[]}) => {
     return (
         <div className="listItem">
             <Table>
@@ -20,7 +22,7 @@ const ListBoxOrders = (props) => {
                         <Td>{data.boxName}</Td>
                         <Td>{data.boxWeight}</Td>
                         <Td style={{backgroundColor: data.boxColour}}></Td>
-                        <Td>{data.boxDestination}</Td>
+                        <Td>{data.boxWeight * 5}</Td>
                     </Tr>
                 )}
                 </Tbody>

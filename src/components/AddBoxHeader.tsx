@@ -1,4 +1,5 @@
-const AddBoxHeader = (props) => {
+
+const AddBoxHeader = (props: {title: string}) => {
     return (
         <div className="addBoxHeader">
             <h1>

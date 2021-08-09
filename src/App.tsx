@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import {useState} from "react";
 import './css/app.css';
 import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 import AddBoxForm from './components/AddBoxForm';
@@ -25,7 +25,7 @@ function App() {
     boxDestination: "sweden"
   }]);
 
-  const addBox = (boxname, boxweight, boxcolour, boxdestination) => {
+  const addBox = (boxname: string, boxweight: number, boxcolour: string, boxdestination: string) => {
     setBoxinatorData([...boxinatorData,
         {
           boxName: boxname,
@@ -56,7 +56,7 @@ function App() {
               </NavLink>
               <Route path="/listboxes" render={props => (
                 <div>
-                  <ListBoxOrders orders={boxinatorData} />
+                  <ListBoxOrders orders = {boxinatorData} />
                 </div>)
               }/>
           </Router>
