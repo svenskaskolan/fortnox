@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { ChromePicker } from "react-color";
+import tAddBoxFormProps from "../interfacesAndTypes/tAddBoxFormProps";
 
-const AddBoxForm = (props: any) => {
-
+const AddBoxForm = ({onSubmitFunction, optionsList}: tAddBoxFormProps) => {
+    // Sweden set to the default country
     const [custName, setCustName] = useState('');
-    const [custWeight, setCustWeight] = useState<number>();
+    const [custWeight, setCustWeight] = useState(0);
     const [custColour, setCustColour] = useState('');
     const [selectedColour, setSelectedColour] = useState(custColour);
     const [custCountry, setCustCountry] = useState('Sweden');
+    const [countryFactor, setCountryFactor] = useState(1.3);
     const [textColour, setTextColour] = useState('black');
     const [formIsValid, setFormIsValid] = useState(true);
     const [showToaster, setShowToaster] = useState(false);
@@ -30,19 +32,29 @@ const AddBoxForm = (props: any) => {
             setTextColour('black');
         }
     }
+    // ToDo find correct typescript definition for the select event click.
+    // update both the country name and value.  Name is not used currently, but keep it in the database for future.
+    const setCountryData = (event:any) => {
+        setCustCountry(event.target.options[event.target.selectedIndex].innerText);
+        setCountryFactor(Number(event.target.value));
+    }
 
+    // only after submitting, check that all values are entered, then post the changes and reset the form.
+    // show a toaster message if all saved well.
     const validateForm = () => {
         if (!custName || !custWeight || custWeight < 0 || !selectedColour || !custCountry ) {
             setFormIsValid(false);
             return;
         }
-        props.onSubmitFunction(custName, custWeight, selectedColour, custCountry)
+        // with backend this would be async with callback for errors and success
+        onSubmitFunction(custName, custWeight, selectedColour, custCountry, countryFactor);
+        //assume success
         setCustName('');
-        setCustWeight(undefined);
+        setCustWeight(0);
         setSelectedColour('');
-        setCustCountry('');
+        setCustCountry('Sweden');
+        setCountryFactor(1.3);
         setFormIsValid(true);
-        // assume we get successful post to server.
         setShowToaster(true);
         // switch off the toaster message after 3 seconds.
         setTimeout(function(){ setShowToaster(false) }, 3000);
@@ -57,7 +69,7 @@ const AddBoxForm = (props: any) => {
                 {!formIsValid && !custName && (<div className="Card__errormessage">you need to enter a name</div>)}
             </div>
             <div>
-                <input placeholder="Weight" type="number" value={custWeight} onChange={event => setCustWeight(parseFloat(event.target.value))} />
+                <input placeholder="Weight in Kgs" type="number" value={custWeight || ''} onChange={event => setCustWeight(parseFloat(event.target.value))} />
                 {!formIsValid && (!custWeight || custWeight < 0) && (<div className="Card__errormessage">enter a positive value for weight</div>)}
             </div>
             <div>
@@ -70,11 +82,10 @@ const AddBoxForm = (props: any) => {
                 </div>
             </div>
             <div>
-                <select value={custCountry} onChange={event => setCustCountry(event.target.value)} >
-                    <option>Sweden</option>
-                    <option>China</option>
-                    <option>Brazil</option>
-                    <option>Australia</option>
+                <select value={countryFactor} onChange={event => setCountryData(event)} >
+                    {optionsList.map((data, index) =>
+                        <option key={index} value={data.countryFactor}>{data.countryName}</option>
+                    )}
                 </select>
                 {!formIsValid && !custCountry && (<div className="Card__errormessage">you need to enter a country</div>)}
             </div>

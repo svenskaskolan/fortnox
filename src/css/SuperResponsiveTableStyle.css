@@ -7,6 +7,12 @@
   display: none;
 }
 
+.Listitem__totals {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
 @media screen and (max-width: 40em) {
   /*
     Force table elements to not behave like tables anymore
