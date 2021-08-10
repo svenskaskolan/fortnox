@@ -88,4 +88,8 @@ I have managed to prevent any shade of blue from being picked, it does make the 
 
 I added react router to the bundle for some basic routing.
 
+I have used Jest for testing.  More detailed tests should be added.
+
+Styling is quite basic, since starting from scratch without a styleguide.
+
 
