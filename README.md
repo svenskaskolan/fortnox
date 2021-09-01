@@ -1,4 +1,3 @@
-Note: *** All code is found on the Master branch ***
 
 # Getting Started with Create React App
 
@@ -93,5 +92,3 @@ I added react router to the bundle for some basic routing.
 I have used Jest for testing.  More detailed tests should be added.
 
 Styling is quite basic, since starting from scratch without a styleguide.
-
-
