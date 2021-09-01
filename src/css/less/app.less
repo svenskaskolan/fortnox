@@ -1,0 +1,106 @@
+@button-colour: darkseagreen;
+@border-colour: darkgray;
+@textColour: #1b1b1b;
+
+.App {
+  text-align: center;
+  .buttonLink {
+    width: 100px;
+    margin: 10px 0;
+    border: solid 2px @border-colour;
+    border-radius: 4px;
+    background-color: @button-colour;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    &:active {
+      border-color: rgb(88, 88, 248);
+    }
+  }
+}
+
+.App-center {
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  color: @textColour;
+  .colourPicker {
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+  }
+  input,button,select {
+    height: 1.5rem;
+    border-radius: 4px;
+    border: solid 2px @border-colour;
+    padding: 0 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    &:focus {
+      border-color: rgb(88, 88, 248);
+    }
+  }
+}
+.addBoxHeader {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.Card {
+  background-color: #c4cad4;
+   &__title {
+     font-weight: bold;
+     padding: 10px 0;
+     font-size: 1.3rem;
+   }
+   &__button {
+      background-color: @button-colour;
+      margin-bottom: 10px;
+   }
+   &__errormessage {
+     font-size: .8rem;
+     color: red;
+   }
+   &__toaster {
+    margin-top: 10px;
+    visibility: hidden; 
+    min-width: 80%; 
+    margin-left: auto; 
+    margin-right: auto;
+    background-color: @button-colour; 
+    color: #fff; 
+    text-align: center; 
+    border-radius: 4px; 
+    padding: 16px; 
+    &.show {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+  }
+/* Animations to fade the toaster in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+} 
+}
