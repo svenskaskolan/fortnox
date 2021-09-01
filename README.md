@@ -1,3 +1,21 @@
+Once you have cloned the fortknox package locally.  
+
+You will next need in to install node.js if you dont already have it installed.
+
+# https://nodejs.org/en/download/
+
+No open your development environment (I use VSCode)
+
+Navigate to the src folder in a terminal emulator.
+
+issue the command 
+# npm install
+
+This will install all the package dependancies.
+
+Now you can run 
+# npm start
+
 
 # Getting Started with Create React App
 
@@ -70,9 +88,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-intalled less using npm intall less
+intalled less using npm install less
 
-intall build server
+install build server
 
 npm install -g serve
 run build version using serve -s build
