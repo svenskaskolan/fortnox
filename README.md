@@ -4,7 +4,7 @@ You will next need in to install node.js if you dont already have it installed.
 
 # https://nodejs.org/en/download/
 
-No open your development environment (I use VSCode)
+Now open your development environment (I use VSCode)
 
 Navigate to the src folder in a terminal emulator.
 
